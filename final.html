@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="¡Felicitaciones! Has completado todas las actividades de Caperucita Roja. Revisa tus estrellas y puntaje total de aprendizaje.">
+    <title>¡Felicitaciones! Aventura Completada - Caperucita Roja</title>
+    
+    <link rel="icon" href="img/logo1.png" type="image/png">
+    <link rel="stylesheet" href="css/juegos.css">
+</head>
+<body>
+
+    <main class="contenedor" style="max-width: 650px; margin: 40px auto;">
+        <h1>🎉 ¡Excelente Trabajo! 🎉</h1>
+        <p style="font-size: 18px; margin-bottom: 10px;">¡Has completado con éxito todos los juegos y lecturas de Caperucita Roja!</p>
+        <p>Tu esfuerzo te ha llevado al final del camino seguro en el bosque.</p>
+
+        <!-- CONTENEDOR DE ESTRELLAS GANADAS (DINÁMICO) -->
+        <section class="estrellas-contenedor" aria-label="Estrellas ganadas">
+            <span class="estrella" id="star-1">★</span>
+            <span class="estrella" id="star-2">★</span>
+            <span class="estrella" id="star-3">★</span>
+        </section>
+
+        <section class="tarjeta-puntos" style="background: #eef2ff; border: 2px solid #c7d2fe; border-radius: 24px; padding: 25px; margin: 20px 0;">
+            <h2 style="font-family: 'Fredoka', sans-serif; font-size: 26px; color: #4f46e5; margin-bottom: 5px;">Puntaje Final Conseguido</h2>
+            <div style="font-size: 48px; font-weight: 800; color: #312e81;"><span id="puntajeFinal">0</span> <span style="font-size: 22px; font-weight: 500; color: #4f46e5;">/ 150 pts</span></div>
+        </section>
+
+        <!-- BOTONES DE ACCIÓN -->
+        <footer style="margin-top: 20px;">
+            <a href="basico4.html" class="btn-action btn-reintentar" id="lnk-releer" style="margin: 8px;">
+                📖 Volver a Leer
+            </a>
+            <a href="inicio.html" class="btn-action btn-finalizar" id="lnk-inicio" style="margin: 8px;">
+                🏠 Ir al Inicio (Dashboard)
+            </a>
+        </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Obtener el puntaje final guardado
+        let puntaje = parseInt(localStorage.getItem("puntaje")) || 0;
+        document.getElementById("puntajeFinal").innerHTML = puntaje;
+
+        // Determinar estrellas ganadas basadas en el puntaje
+        // Puntaje máximo es 150 (30 por cada uno de los 5 juegos)
+        let estrellasGanadas = 0;
+        if (puntaje >= 130) {
+            estrellasGanadas = 3;
+        } else if (puntaje >= 80) {
+            estrellasGanadas = 2;
+        } else if (puntaje > 0) {
+            estrellasGanadas = 1;
+        }
+
+        // Animar las estrellas con un retardo para dar efecto premium
+        for (let i = 1; i <= estrellasGanadas; i++) {
+            setTimeout(() => {
+                const starEl = document.getElementById(`star-${i}`);
+                if (starEl) {
+                    starEl.classList.add("ganada");
+                    starEl.innerHTML = "⭐"; // Cambiar a estrella de color
+                }
+            }, i * 500);
+        }
+
+        // Narración por voz final
+        let mensajeFelicitaciones = `¡Felicitaciones! Has completado toda la plataforma de aprendizaje de Caperucita Roja y ganaste ${puntaje} puntos. ¡Eres increíble!`;
+        let voz = new SpeechSynthesisUtterance(mensajeFelicitaciones);
+        voz.lang = "es-ES";
+        voz.rate = 1.0;
+        speechSynthesis.speak(voz);
+
+        // Efecto continuo de confeti durante 4 segundos
+        const end = Date.now() + 4000;
+        (function frame() {
+            confetti({
+                particleCount: 3,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0, y: 0.8 }
+            });
+            confetti({
+                particleCount: 3,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1, y: 0.8 }
+            });
+
+            if (Date.now() < end) {
+                requestAnimationFrame(frame);
+            }
+        })();
+    </script>
+</body>
+</html>

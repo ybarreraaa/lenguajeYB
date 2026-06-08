@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lectura guiada de Caperucita Roja para alumnos de 4° Básico. Utiliza reproducción por voz interactiva con velocidades ajustable y resaltado dinámico de texto.">
+    <title>Lectura Interactiva: Caperucita Roja - 4° Básico</title>
+    
+    <link rel="icon" href="img/logo1.png" type="image/png">
+    <link rel="stylesheet" href="css/aprendizaje.css">
+</head>
+<body>
+
+    <main class="contenedor">
+        <header>
+            <h1>📖 Caperucita Roja</h1>
+            <h2>Escucha el cuento y sigue la lectura asistida</h2>
+        </header>
+
+        <article class="contenido-lectura">
+            <img src="img/caperucita3.png" alt="Ilustración de Caperucita Roja caminando por el bosque" class="imagen" id="portada-cuento">
+
+            <!-- CONSOLA DE REPRODUCCIÓN -->
+            <section class="reproductor-panel" aria-label="Controles de audio y voz">
+                <div class="estado-lectura" id="estado">🙂 Velocidad Normal</div>
+                
+                <div class="botones-grupo">
+                    <button class="btn-leer" id="btn-leer" onclick="leerTexto()" title="Iniciar o reanudar lectura">
+                        🔊 Iniciar Lectura
+                    </button>
+                    
+                    <button class="btn-velocidad activo" id="btn-vel-1" onclick="velocidadNormal()" title="Velocidad normal de voz">
+                        🙂 Normal (1x)
+                    </button>
+                    
+                    <button class="btn-velocidad" id="btn-vel-05" onclick="velocidadLenta()" title="Velocidad lenta de voz para mejor comprensión">
+                        🐢 Lento (0.6x)
+                    </button>
+                    
+                    <button class="btn-velocidad" id="btn-vel-15" onclick="velocidadRapida()" title="Velocidad rápida de voz">
+                        ⚡ Rápido (1.5x)
+                    </button>
+                    
+                    <button class="btn-detener" id="btn-detener" onclick="detener()" title="Detener lectura y limpiar resaltado">
+                        ⏹ Detener
+                    </button>
+                </div>
+            </section>
+
+            <!-- CAJA DE TEXTO DEL CUENTO -->
+            <section class="cuento-texto" aria-label="Texto del cuento">
+                <div id="cuento" class="cuento">
+                    <!-- Las palabras del cuento serán insertadas y envueltas en spans dinámicamente por JS -->
+                </div>
+            </section>
+
+            <!-- ENSEÑANZA / MORALEJA -->
+            <section class="explicacion" aria-labelledby="titulo-moraleja">
+                <h3 id="titulo-moraleja">💡 Enseñanza del Cuento</h3>
+                <p>Esta historia nos enseña que debemos escuchar con atención los consejos de nuestra familia y proteger nuestra seguridad teniendo cuidado al hablar con personas desconocidas.</p>
+            </section>
+
+            <!-- BOTÓN JUGAR -->
+            <footer class="jugar">
+                <a href="juego1.html" class="btn-jugar" id="lnk-jugar">
+                    🎮 ¡Comenzar Juegos Interactivos!
+                </a>
+            </footer>
+        </article>
+    </main>
+
+    <script src="js/aprendizaje.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de control del estudiante en la plataforma educativa de Caperucita Roja. Accede al cuento y a las actividades.">
+    <title>Tu Aventura de Lectura - Inicio</title>
+    
+    <link rel="icon" href="img/logo1.png" type="image/png">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <main class="container">
+        <section class="bienvenida">
+            <h1>¡Tu Aventura de Lectura!</h1>
+            
+            <img id="avatar" alt="Tu avatar de estudiante" class="avatar-grande">
+            
+            <p class="nombre-alumno">¡Hola, <span id="nombreUsuario">Estudiante</span>!</p>
+            <p>¡Qué alegría tenerte aquí! ¿Listo para leer una gran historia y divertirte con juegos?</p>
+        </section>
+
+        <section class="tarjeta-curso">
+            <h3>📖 Caperucita Roja</h3>
+            <p>Lee el clásico cuento adaptado para 4° Básico, escucha la narración asistida con voz y juega a los 5 desafíos interactivos para ganar estrellas.</p>
+        </section>
+
+        <footer>
+            <button id="btn-comenzar" onclick="window.location.href='basico4.html'">
+                📖 ¡Comenzar Lectura!
+            </button>
+        </footer>
+    </main>
+
+    <script>
+        const nombre = localStorage.getItem("nombre");
+        const avatar = localStorage.getItem("avatar");
+
+        // Seguridad: si no hay sesión iniciada, redirige al login
+        if (!nombre || !avatar) {
+            window.location.href = "index.html";
+        }
+
+        document.getElementById("nombreUsuario").innerText = nombre;
+        document.getElementById("avatar").src = avatar;
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        window.onload = function () {
+            const duration = 2000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 60,
+                    origin: { x: 0, y: 0.8 }
+                });
+
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 60,
+                    origin: { x: 1, y: 0.8 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            })();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juego 2: Comprensión lectora. Lee o escucha las preguntas de Verdadero o Falso y demuestra tus conocimientos sobre el cuento.">
+    <title>Juego 2: Verdadero o Falso - Caperucita Roja</title>
+    
+    <link rel="icon" href="img/logo1.png" type="image/png">
+    <link rel="stylesheet" href="css/juegos.css">
+</head>
+<body>
+
+    <header>
+        <div>📖 Juego 2: Comprensión Lectora</div>
+        <div aria-live="polite">⭐ Puntaje Total: <span id="puntaje">0</span></div>
+    </header>
+
+    <main class="contenedor">
+        <h1>¿Verdadero o Falso?</h1>
+        <p>Lee cada oración o haz clic en "🔊 Escuchar" y responde con cuidado.</p>
+
+        <img src="img/caperucita.jpg" alt="Caperucita Roja en el bosque" class="imagen-juego" id="ilustracion-juego">
+
+        <!-- PREGUNTA 1 -->
+        <section class="pregunta-card" aria-label="Pregunta 1">
+            <p>1. Caperucita llevaba una canasta para su abuelita.</p>
+            <button class="btn-audio" onclick="leerPregunta('Caperucita llevaba una canasta para su abuelita')">
+                🔊 Escuchar Pregunta
+            </button>
+            <div class="botones-opciones">
+                <button class="btn-verdadero" onclick="responder(this, true)">
+                    Verdadero
+                </button>
+                <button class="btn-falso" onclick="responder(this, false)">
+                    Falso
+                </button>
+            </div>
+        </section>
+
+        <!-- PREGUNTA 2 -->
+        <section class="pregunta-card" aria-label="Pregunta 2">
+            <p>2. El lobo ayudó a Caperucita.</p>
+            <button class="btn-audio" onclick="leerPregunta('El lobo ayudó a Caperucita')">
+                🔊 Escuchar Pregunta
+            </button>
+            <div class="botones-opciones">
+                <button class="btn-verdadero" onclick="responder(this, false)">
+                    Verdadero
+                </button>
+                <button class="btn-falso" onclick="responder(this, true)">
+                    Falso
+                </button>
+            </div>
+        </section>
+
+        <!-- PREGUNTA 3 -->
+        <section class="pregunta-card" aria-label="Pregunta 3">
+            <p>3. La mamá le dijo que hablara con extraños.</p>
+            <button class="btn-audio" onclick="leerPregunta('La mamá le dijo que hablara con extraños')">
+                🔊 Escuchar Pregunta
+            </button>
+            <div class="botones-opciones">
+                <button class="btn-verdadero" onclick="responder(this, false)">
+                    Verdadero
+                </button>
+                <button class="btn-falso" onclick="responder(this, true)">
+                    Falso
+                </button>
+            </div>
+        </section>
+
+        <!-- CONTROLES -->
+        <footer>
+            <button class="btn-finalizar" id="btn-finalizar" onclick="finalizar()">
+                🎮 Finalizar Juego 2
+            </button>
+        </footer>
+
+        <p class="mensaje" id="resultado" aria-live="assertive"></p>
+    </main>
+
+    <script src="js/juego2.js"></script>
+</body>
+</html>

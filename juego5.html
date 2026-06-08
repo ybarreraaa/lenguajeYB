@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juego 5: Relación de preguntas y respuestas. Empareja cada pregunta clave del cuento con su respuesta correcta.">
+    <title>Juego 5: Relacionar Preguntas - Caperucita Roja</title>
+    
+    <link rel="icon" href="img/logo1.png" type="image/png">
+    <link rel="stylesheet" href="css/juegos.css">
+</head>
+<body>
+
+    <header>
+        <div>🎮 Juego 5: Preguntas y Respuestas</div>
+        <div aria-live="polite">⭐ Puntaje Total: <span id="puntaje">0</span></div>
+    </header>
+
+    <main class="contenedor">
+        <h1>Relaciona cada pregunta con su respuesta</h1>
+        <p>Arrastra los rectángulos amarillos hacia las casillas vacías correspondientes a cada pregunta.</p>
+
+        <!-- ZONAS DE PREGUNTAS -->
+        <section class="zonas-contenedor" aria-label="Zonas de preguntas">
+            <div class="zona" data-respuesta="abuelita" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)">
+                <span style="font-size: 15px; display: block; margin-bottom: 5px; color: #64748b;">¿A quién visitaba Caperucita?</span>
+                <strong>Arrastra aquí</strong>
+            </div>
+            
+            <div class="zona" data-respuesta="bosque" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)">
+                <span style="font-size: 15px; display: block; margin-bottom: 5px; color: #64748b;">¿Dónde encontró al lobo?</span>
+                <strong>Arrastra aquí</strong>
+            </div>
+            
+            <div class="zona" data-respuesta="lobo" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)">
+                <span style="font-size: 15px; display: block; margin-bottom: 5px; color: #64748b;">¿Quién engañó a Caperucita?</span>
+                <strong>Arrastra aquí</strong>
+            </div>
+        </section>
+
+        <!-- OPCIONES DE RESPUESTA -->
+        <section class="opciones-contenedor" aria-label="Respuestas posibles">
+            <div id="op1" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="lobo" role="button" aria-grabbed="false">
+                🐺 El Lobo Feroz
+            </div>
+            
+            <div id="op2" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="abuelita" role="button" aria-grabbed="false">
+                👵 Su Abuelita
+            </div>
+            
+            <div id="op3" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="bosque" role="button" aria-grabbed="false">
+                🌲 En el Bosque
+            </div>
+        </section>
+
+        <!-- CONTROLES -->
+        <footer>
+            <button class="btn-finalizar" id="btn-finalizar" onclick="validarJuego('final.html', 3)">
+                ✅ Finalizar Desafío Final
+            </button>
+            <button class="btn-reintentar" id="btn-reintentar" onclick="reiniciar()">
+                🔄 Reintentar
+            </button>
+        </footer>
+
+        <p class="mensaje" id="mensaje" aria-live="assertive"></p>
+    </main>
+
+    <script src="js/juegos.js"></script>
+</body>
+</html>

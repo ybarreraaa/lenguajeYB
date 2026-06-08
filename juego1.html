@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juego interactivo de Caperucita Roja: Arrastra los personajes del bosque a su respectivo nombre para ganar puntos.">
+    <title>Juego 1: Personajes del Cuento - Caperucita Roja</title>
+    
+    <link rel="icon" href="img/logo1.png" type="image/png">
+    <link rel="stylesheet" href="css/juegos.css">
+</head>
+<body>
+
+    <header>
+        <div>🎮 Juego 1: Personajes del Cuento</div>
+        <div aria-live="polite">⭐ Puntaje Total: <span id="puntaje">0</span></div>
+    </header>
+
+    <main class="contenedor">
+        <h1>Arrastra cada personaje a su nombre</h1>
+        <p>Haz clic y arrastra el emoji del personaje a la casilla correspondiente.</p>
+
+        <!-- ZONAS DE DROP -->
+        <section class="zonas-contenedor" aria-label="Zonas de destino">
+            <div class="zona" data-respuesta="caperucita" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)">
+                Caperucita Roja
+            </div>
+            <div class="zona" data-respuesta="lobo" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)">
+                El Lobo Astuto
+            </div>
+            <div class="zona" data-respuesta="abuelita" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)">
+                La Abuelita
+            </div>
+        </section>
+
+        <!-- OPCIONES ARRASTRABLES -->
+        <section class="opciones-contenedor" aria-label="Personajes para arrastrar">
+            <div id="op1" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="lobo" role="button" aria-grabbed="false">🐺 Lobo</div>
+            <div id="op2" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="abuelita" role="button" aria-grabbed="false">👵 Abuelita</div>
+            <div id="op3" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="caperucita" role="button" aria-grabbed="false">👧 Caperucita</div>
+        </section>
+
+        <!-- CONTROLES -->
+        <footer>
+            <button class="btn-finalizar" id="btn-finalizar" onclick="validarJuego('juego2.html')">
+                ✅ Finalizar Juego 1
+            </button>
+            <button class="btn-reintentar" id="btn-reintentar" onclick="reiniciar()">
+                🔄 Reintentar
+            </button>
+        </footer>
+
+        <p class="mensaje" id="mensaje" aria-live="assertive"></p>
+    </main>
+
+    <script src="js/juego1.js"></script>
+</body>
+</html>

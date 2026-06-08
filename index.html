@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma interactiva de lectura de Caperucita Roja para 4° de educación básica. Aprende con audio, resaltado de texto y juegos educativos.">
+    <title>¡Bienvenidos a Caperucita Roja! - Plataforma Educativa</title>
+    
+    <link rel="icon" href="img/logo1.png" type="image/png">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <img src="img/logo1.png" alt="Logotipo de Caperucita Roja" class="logo" id="main-logo">
+            <h1>¡Hola, Amiguito!</h1>
+            <h2>Bienvenido a tu aventura de lectura</h2>
+        </header>
+
+        <section class="formulario-bienvenida">
+            <p>Escribe tu nombre y selecciona un avatar para comenzar.</p>
+            <input type="text" id="nombre" placeholder="Escribe tu nombre aquí..." autocomplete="off">
+        </section>
+
+        <section class="seleccion-avatar">
+            <h3>Selecciona tu avatar favorito:</h3>
+            <div class="avatars" role="radiogroup" aria-label="Selección de avatar">
+                <img src="img/avatar1.jpeg" alt="Avatar Mono Divertido" onclick="seleccionarAvatar(this)" role="radio" aria-checked="false" tabindex="0">
+                <img src="img/avatar2.jpeg" alt="Avatar Gato Juguetón" onclick="seleccionarAvatar(this)" role="radio" aria-checked="false" tabindex="0">
+                <img src="img/avatar5.jpeg" alt="Avatar Elefante Simpático" onclick="seleccionarAvatar(this)" role="radio" aria-checked="false" tabindex="0">
+                <img src="img/avatar6.jpeg" alt="Avatar Jirafa Amistosa" onclick="seleccionarAvatar(this)" role="radio" aria-checked="false" tabindex="0">
+            </div>
+        </section>
+
+        <button id="btn-entrar" onclick="validar()">¡Entrar a la Plataforma! 🚀</button>
+    </main>
+
+    <script src="js/bienvenida.js"></script>
+</body>
+</html>

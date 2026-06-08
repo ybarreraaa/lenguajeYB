@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Juego 3: Ordena la historia. Coloca las partes de Caperucita Roja en el orden correcto (Inicio, Desarrollo y Final) para ganar estrellas.">
+    <title>Juego 3: Orden del Cuento - Caperucita Roja</title>
+    
+    <link rel="icon" href="img/logo1.png" type="image/png">
+    <link rel="stylesheet" href="css/juegos.css">
+</head>
+<body>
+
+    <header>
+        <div>🎮 Juego 3: Orden del Cuento</div>
+        <div aria-live="polite">⭐ Puntaje Total: <span id="puntaje">0</span></div>
+    </header>
+
+    <main class="contenedor">
+        <h1>Ordena los hechos del cuento</h1>
+        <p>Arrastra cada oración a su número correspondiente en la secuencia de la historia (1: Inicio, 2: Medio, 3: Final).</p>
+
+        <!-- ZONAS DE DROP (PASOS DEL CUENTO) -->
+        <section class="zonas-contenedor" aria-label="Línea de tiempo del cuento">
+            <div class="zona" data-respuesta="inicio" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)">
+                Pasó Primero (1)
+            </div>
+            <div class="zona" data-respuesta="medio" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)">
+                Pasó Después (2)
+            </div>
+            <div class="zona" data-respuesta="final" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)">
+                Pasó al Final (3)
+            </div>
+        </section>
+
+        <!-- OPCIONES ORRASTRABLES -->
+        <section class="opciones-contenedor" aria-label="Eventos del cuento">
+            <div id="op1" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="medio" role="button" aria-grabbed="false">
+                🐺 Caperucita encuentra al lobo
+            </div>
+            <div id="op2" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="final" role="button" aria-grabbed="false">
+                🪓 El leñador ayuda a la abuelita
+            </div>
+            <div id="op3" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="inicio" role="button" aria-grabbed="false">
+                🧺 Su mamá le entrega una canasta
+            </div>
+        </section>
+
+        <!-- CONTROLES -->
+        <footer>
+            <button class="btn-finalizar" id="btn-finalizar" onclick="validarJuego()">
+                ✅ Finalizar Juego 3
+            </button>
+            <button class="btn-reintentar" id="btn-reintentar" onclick="reiniciar()">
+                🔄 Reintentar
+            </button>
+        </footer>
+
+        <p class="mensaje" id="mensaje" aria-live="assertive"></p>
+    </main>
+
+    <script src="js/juego3.js"></script>
+</body>
+</html>
