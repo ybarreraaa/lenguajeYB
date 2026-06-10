@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Juego 4: La moraleja de la historia. Arrastra la moraleja correcta para reflexionar sobre la enseñanza de Caperucita Roja.">
-    <title>Juego 4: Enseñanza del Cuento - Caperucita Roja</title>
+    <meta name="description" content="Juego 4: Juego de memoria de Caperucita Roja. Encuentra las parejas de los personajes del bosque para ganar puntos.">
+    <title>Juego 4: Memoria del Bosque - Caperucita Roja</title>
     
     <link rel="icon" href="img/logo1.png" type="image/png">
     <link rel="stylesheet" href="css/juegos.css">
@@ -12,39 +12,22 @@
 <body>
 
     <header>
-        <div>🎮 Juego 4: Enseñanza del Cuento</div>
+        <div>🎮 Juego 4: Memoria del Bosque</div>
         <div aria-live="polite">⭐ Puntaje Total: <span id="puntaje">0</span></div>
     </header>
 
     <main class="contenedor">
-        <h1>¿Cuál es la moraleja correcta?</h1>
-        <p>Arrastra la enseñanza correcta que aprendió Caperucita Roja a la casilla de destino.</p>
+        <h1>Parejas del Bosque</h1>
+        <p>Haz clic en las cartas misteriosas para voltearlas y encontrar a los personajes iguales. ¡Demuestra tu buena memoria!</p>
 
-        <!-- ZONA DE DESTINO (MORALEJA) -->
-        <section class="zonas-contenedor" aria-label="Zona de respuesta">
-            <div class="zona" data-respuesta="moraleja" ondrop="soltar(event)" ondragover="permitirSoltar(event)" ondragleave="dragLeave(event)" style="min-height: 140px; width: 100%; max-width: 600px;">
-                Moraleja del cuento (Arrastra aquí)
-            </div>
-        </section>
-
-        <!-- OPCIONES DE RESPUESTA -->
-        <section class="opciones-contenedor" aria-label="Moralejas posibles" style="flex-direction: column; align-items: center;">
-            <div id="op1" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="moraleja" role="button" aria-grabbed="false" style="max-width: 500px; text-align: left; font-size: 16px;">
-                💡 Obedecer consejos de la familia y no confiar en desconocidos.
-            </div>
-            
-            <div id="op2" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="incorrecta" role="button" aria-grabbed="false" style="max-width: 500px; text-align: left; font-size: 16px;">
-                🌲 Es divertido explorar caminos solitarios y desobedecer a mamá.
-            </div>
-            
-            <div id="op3" class="opcion" draggable="true" ondragstart="arrastrar(event)" data-valor="incorrecta" role="button" aria-grabbed="false" style="max-width: 500px; text-align: left; font-size: 16px;">
-                🐺 Confiar siempre en todos los animales astutos del bosque.
-            </div>
+        <!-- TABLERO DE MEMORIA -->
+        <section class="memoria-tablero" id="tablero" aria-label="Tablero de juego de memoria">
+            <!-- Las cartas se generarán dinámicamente desde JavaScript -->
         </section>
 
         <!-- CONTROLES -->
         <footer>
-            <button class="btn-finalizar" id="btn-finalizar" onclick="validarJuego('juego5.html', 1)">
+            <button class="btn-finalizar" id="btn-finalizar" onclick="validarJuego()" style="display: none;">
                 ✅ Finalizar Juego 4
             </button>
             <button class="btn-reintentar" id="btn-reintentar" onclick="reiniciar()">
@@ -55,6 +38,6 @@
         <p class="mensaje" id="mensaje" aria-live="assertive"></p>
     </main>
 
-    <script src="js/juegos.js"></script>
+    <script src="js/juego4.js"></script>
 </body>
 </html>

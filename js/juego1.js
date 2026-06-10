@@ -74,10 +74,56 @@ function soltar(event) {
     }
 }
 
-// Helper para reproducción de audio
+// Helper para reproducción de audio sintetizado usando Web Audio API (con desbloqueo de contexto)
+let audioCtx = null;
 function reproducirAudio(ruta) {
-    const audio = new Audio(ruta);
-    audio.play().catch(e => console.log("Audio play blocked by browser policies"));
+    try {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === "suspended") {
+            audioCtx.resume();
+        }
+        
+        // Determinamos el tipo de sonido por la ruta o el nombre
+        if (ruta.includes("bueno") || ruta.includes("correcto")) {
+            // Sonido de Acierto: Arpegio ascendente alegre (C5, E5, G5, C6)
+            const notas = [523.25, 659.25, 783.99, 1046.50];
+            notas.forEach((freq, index) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime + index * 0.08);
+                
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime + index * 0.08);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + index * 0.08 + 0.3);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start(audioCtx.currentTime + index * 0.08);
+                osc.stop(audioCtx.currentTime + index * 0.08 + 0.35);
+            });
+        } else {
+            // Sonido de Error: Zumbido bajo y triste
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = "sawtooth";
+            osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+            osc.frequency.linearRampToValueAtTime(110, audioCtx.currentTime + 0.25);
+            
+            gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+            
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            osc.start(audioCtx.currentTime);
+            osc.stop(audioCtx.currentTime + 0.3);
+        }
+    } catch (e) {
+        console.log("Audio synthesis blocked or not supported:", e);
+    }
 }
 
 // ==========================================================================
